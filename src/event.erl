@@ -1,5 +1,5 @@
 -module(event).
--compile(export_all).
+-export([start/2, start_link/2, cancel/1, init/3, loop/1]).
 
 -record(state, {server, name = "", to_go = 0}).
 
@@ -19,10 +19,10 @@ normalize(N) ->
 	Limit = 49*24*60*60,
 	[N rem Limit | lists:duplicate(N div Limit, Limit)].
 
-start(EventName, Delay) ->
+start(EventName, DateTime) ->
 	spawn(?MODULE, init, [self(), EventName, Delay]).
 
-start_link(EventName, Delay) ->
+start_link(EventName, DateTime) ->
 	spawn_link(?MODULE, init, [self(), EventName, Delay]).
 
 init(Server, EventName, DateTime) ->
