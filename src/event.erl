@@ -20,10 +20,10 @@ normalize(N) ->
 	[N rem Limit | lists:duplicate(N div Limit, Limit)].
 
 start(EventName, DateTime) ->
-	spawn(?MODULE, init, [self(), EventName, Delay]).
+	spawn(?MODULE, init, [self(), EventName, DateTime]).
 
 start_link(EventName, DateTime) ->
-	spawn_link(?MODULE, init, [self(), EventName, Delay]).
+	spawn_link(?MODULE, init, [self(), EventName, DateTime]).
 
 init(Server, EventName, DateTime) ->
 	loop(#state{server=Server, name=EventName, to_go=time_to_go(DateTime)}).
