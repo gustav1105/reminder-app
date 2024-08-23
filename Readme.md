@@ -6,12 +6,12 @@ erl -pa ebin/
 
 start create and listen
 
-evserv:start().
-evserv:subscribe("Bday", "Party", {{Y,M,D},{H,M,S}}).
-evserve:listen(5000).
+reminder_evserv:start().
+reminder_evserv:subscribe("Bday", "Party", {{Y,M,D},{H,M,S}}).
+reminder_evserve:listen(5000).
 
 call supervisor
 
-SupPid = sup:start(evserv,[]).
-whereis(evserv).
+SupPid = reminder_sup:start(evserv,[]).
+whereis(reminder_evserv).
 exit(SupPid, shutdown).

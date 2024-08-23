@@ -1,4 +1,4 @@
--module(event).
+-module(reminder_event).
 -export([start/2, start_link/2, cancel/1, init/3, loop/1]).
 
 -record(state, {server, name = "", to_go = 0}).

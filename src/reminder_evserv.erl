@@ -1,5 +1,5 @@
--module(evserv).
--compile(export_all).
+-module(reminder_evserv).
+-export([start/0, start_link/0, terminate/0, subscribe/1, add_event/3, add_event2/3, cancel/1, listen/1, send_to_clients/2, valid_time/1, valid_time/3, init/0, valid_datetime/1]).
 
 -record(state, {events, clients}).
 -record(event, {name="", description="", pid, timeOut={{1970,1,1},{0,0,0}}}).
