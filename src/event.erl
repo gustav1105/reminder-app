@@ -39,7 +39,7 @@ cancel(Pid) ->
 			ok
 	end.
 
-time_to_go(TimeOut={{_,_},{_,_}}) ->
+time_to_go(TimeOut={{_,_,_},{_,_,_}}) ->
 	Now = calendar:local_time(),
 	ToGo = calendar:datetime_to_gregorian_seconds(TimeOut) -
 		calendar:datetime_to_gregorian_seconds(Now),

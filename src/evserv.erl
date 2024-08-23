@@ -86,6 +86,9 @@ loop(S=#state{}) ->
 			loop(S)
 	end.
 					
+start() ->
+	register(?MODULE, Pid = spawn(?MODULE, init, [])),
+	Pid.
 
 start_link() ->
 	register(?MODULE, Pid=spawn_link(?MODULE, init, [])),
@@ -96,7 +99,7 @@ terminate() ->
 
 init() ->
 	loop(#state{events=orddict:new(),
-			   clients=ordict:new()}).
+			   clients=orddict:new()}).
 
 subscribe(Pid) ->
 	Ref = erlang:monitor(process, whereis(?MODULE)),
